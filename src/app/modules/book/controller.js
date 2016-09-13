@@ -1,10 +1,7 @@
 export default class BookController {
-	constructor($stateParams) {
-		console.log($stateParams.id)
-		this.name = 'World';
-	}
-
-	changeName() {
-		this.name = 'angular-tips';
+	constructor($stateParams, booksService) {
+		this.book = booksService.getBook($stateParams.id);
 	}
 }
+
+BookController.$inject = ['$stateParams', 'booksService'];

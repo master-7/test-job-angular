@@ -1,16 +1,12 @@
-<!--Material test-->
 <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
 	<md-card-title>
 		<md-card-title-text>
-			<span class="md-headline">Card with image</span>
-			<span class="md-subhead">Large</span>
+			<span class="md-headline">{{vm.book.title.default}}</span>
+			<span class="md-subhead">{{vm.book.description.default}}</span>
 		</md-card-title-text>
 		<md-card-title-media>
-			<div class="md-media-lg card-media"></div>
+			<img class="md-media-lg card-media"
+				 ng-src="https://storage.aggregion.com/api/files/{{vm.book.cover}}/shared/data" checkimage>
 		</md-card-title-media>
 	</md-card-title>
-	<md-card-actions layout="row" layout-align="end center">
-		<md-button>Action 1</md-button>
-		<md-button>Action 2</md-button>
-	</md-card-actions>
 </md-card>
