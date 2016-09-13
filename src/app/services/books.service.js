@@ -1,30 +1,25 @@
 import angular from 'angular';
 
-class BooksMock {
-	constructor() {
-		this.books = {
-			1: {
-				"name": "Верховный алгоритм",
-				"description": "В издательстве «Манн, Иванов и Фербер» выходит книга известного исследователя машинного обучения Педро Домингоса «Верховный алгоритм». В ней автор доступно рассказывает о машинном обучении и о поиске универсального обучающегося алгоритма, который сможет выуживать любые знания из данных и решать любые задачи. Apparat публикует фрагмент книги о том, как алгоритмы учатся понимат нашу личность и как Верховный алгоритм поможет нам создать своего персонального цифрового двойника-помощника.",
-				"img": "/img/Verhovnyj_algoritm._Kak_mashinnoe_obuchenie_izmenit_nash_mir..jpg"
-			},
-			2: {
-				"name": "1984",
-				"description": "Название романа, его терминология и даже имя автора впоследствии стали нарицательными и употребляются для обозначения общественного уклада, напоминающего описанный в романе «1984» тоталитарный режим. Произведение неоднократно становилось жертвой цензуры в социалистических странах и объектом критики со стороны левых кругов на Западе.",
-				"img": "/img/1984_(first_book-cover).jpg"
+class BooksService {
+	constructor($resource) {
+		this.booksRequest = $resource('https://ds.aggregion.com/api/public/catalog/:id',
+			{
+				id: '@id'
 			}
-		};
+		);
 	}
 
 	getBooks() {
-		return this.books;
+		return this.booksRequest.query();
 	}
 
 	getBook(id) {
-		return this.books[id];
+		return this.booksRequest.get({ id: id });
 	}
 }
 
-export default angular.module('services.random-names', [])
-	.service('booksMock', BooksMock)
+BooksService.$inject = ['$resource'];
+
+export default angular.module('services.books-mock', [])
+	.service('booksService', BooksService)
 	.name;
