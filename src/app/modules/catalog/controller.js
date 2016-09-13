@@ -1,10 +1,7 @@
 export default class CatalogController {
-	constructor($stateParams) {
-		console.log($stateParams.id)
-		this.name = 'World';
-	}
-
-	changeName() {
-		this.name = 'angular-tips';
+	constructor($state, booksService) {
+		this.books = booksService.getBooks();
 	}
 }
+
+CatalogController.$inject = ['$state', 'booksService'];
