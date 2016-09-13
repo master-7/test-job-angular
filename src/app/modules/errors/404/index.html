@@ -1,0 +1,14 @@
+<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-repeat="book in vm.books">
+	<a href="/catalog/{{book.id}}">
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">{{book.title.default}}</span>
+				<span class="md-subhead">{{book.description.default}}</span>
+			</md-card-title-text>
+			<md-card-title-media>
+				<img class="md-media-lg card-media"
+					 ng-src="https://storage.aggregion.com/api/files/{{book.cover}}/shared/data" checkimage>
+			</md-card-title-media>
+		</md-card-title>
+	</a>
+</md-card>
