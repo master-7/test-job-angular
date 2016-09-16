@@ -10,11 +10,7 @@ class BooksService {
 	}
 
 	getBooks() {
-		return this.booksRequest.query();
-	}
-
-	getBook(id) {
-		return this.booksRequest.get({ id: id });
+		return this.booksRequest;
 	}
 }
 

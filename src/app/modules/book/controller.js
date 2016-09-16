@@ -1,7 +1,16 @@
 export default class BookController {
-	constructor($stateParams, booksService) {
-		this.book = booksService.getBook($stateParams.id);
+	constructor($state, $stateParams, booksService) {
+		booksService.getBooks().get({ id: $stateParams.id }).$promise.then(
+			(data) => {
+				this.book = data;
+			},
+			(error) => {
+				if(error.status == 404 || error.status == 400) {
+					$state.go('404');
+				}
+			}
+		);
 	}
 }
 
-BookController.$inject = ['$stateParams', 'booksService'];
+BookController.$inject = ['$state', '$stateParams', 'booksService'];

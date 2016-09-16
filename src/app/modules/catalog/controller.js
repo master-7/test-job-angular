@@ -1,6 +1,15 @@
 export default class CatalogController {
 	constructor($state, booksService) {
-		this.books = booksService.getBooks();
+		booksService.getBooks().query().$promise.then(
+			(data) => {
+				this.books = data;
+			},
+			(error) => {
+				if(error.status == 404) {
+					$state.go('404');
+				}
+			}
+		);
 	}
 }
 
