@@ -1,14 +1,16 @@
-<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch ng-repeat="book in vm.books">
-	<a href="/catalog/{{book.id}}">
-		<md-card-title>
-			<md-card-title-text>
-				<span class="md-headline">{{book.title.default}}</span>
-				<span class="md-subhead">{{book.description.default}}</span>
-			</md-card-title-text>
-			<md-card-title-media>
-				<img class="md-media-lg card-media"
-					 ng-src="https://storage.aggregion.com/api/files/{{book.cover}}/shared/data" checkimage>
-			</md-card-title-media>
-		</md-card-title>
-	</a>
-</md-card>
+<md-grid-list
+		md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+		md-row-height-gt-md="1:1" md-row-height="2:1"
+		md-gutter="12px" md-gutter-gt-sm="8px">
+		<md-grid-tile class="green"
+					  md-rowspan="3" md-colspan="2" md-colspan-sm="1" md-colspan-xs="1"
+					  ng-repeat="book in vm.books">
+
+			<a href="/catalog/{{book.id}}">
+				<img class="md-media-lg card-media" ng-src="https://storage.aggregion.com/api/files/{{book.cover}}/shared/data" checkimage>
+			</a>
+			<md-grid-tile-footer>
+				<h3>{{book.title.default}}</h3>
+			</md-grid-tile-footer>
+		</md-grid-tile>
+</md-grid-list>

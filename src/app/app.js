@@ -4,6 +4,7 @@ import uiRouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
 
 import 'angular-material/angular-material.css';
+import '../style/app.css';
 
 import routing from './config/app.config';
 
