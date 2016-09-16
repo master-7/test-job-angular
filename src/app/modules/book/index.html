@@ -3,10 +3,21 @@
 		<md-card-title-text>
 			<span class="md-headline">{{vm.book.title.default}}</span>
 			<span class="md-subhead">{{vm.book.description.default}}</span>
+			<span class="md-subhead">Author: {{vm.book.options.authors}}</span>
 		</md-card-title-text>
 		<md-card-title-media>
 			<img class="md-media-lg card-media"
 				 ng-src="https://storage.aggregion.com/api/files/{{vm.book.cover}}/shared/data" checkimage>
 		</md-card-title-media>
 	</md-card-title>
+	<md-card-content>
+		<div>
+			<img class="md-media-lg card-media" ng-repeat="image in vm.book.previewImages"
+				 ng-src="https://storage.aggregion.com/api/files/{{image}}/shared/data" checkimage>
+		</div>
+		<div>
+			Platform supports:
+			<div class="md-body-1" ng-repeat="platform in vm.book.platformSupport">{{platform}}</div>
+		</div>
+	</md-card-content>
 </md-card>
