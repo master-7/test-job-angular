@@ -3,9 +3,7 @@ import uiRouter from 'angular-ui-router';
 
 import routing from './route';
 
-import MODULE_NAME from '../../../app';
-
-const BOOKS_MODULE_NAME = `${MODULE_NAME}.error404`;
+const BOOKS_MODULE_NAME = 'app.error404';
 
 export default angular.module(BOOKS_MODULE_NAME, [uiRouter])
 	.config(routing)
